@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SoundLedger PH - About Target Stakeholders and Architectural Overview.">
+  <title>SoundLedger PH | Architecture &amp; Stakeholders</title>
+  <link rel="stylesheet" href="css/slstyle.css">
+</head>
+<body>
+  <header class="gig-header">
+    <div class="header-inner">
+      <div class="brand-badge">
+        <span class="live-dot"></span> ARCHITECTURE PROTOCOL
+      </div>
+      <h1>SoundLedger <span>PH</span></h1>
+      <p>System Architecture &amp; Stakeholder Breakdown for OPM Operations</p>
+      
+      <nav aria-label="Main Navigation" class="gig-nav">
+        <ul>
+          <li><a href="webapp_index.html">⚡ Payment Terminal</a></li>
+          <li><a href="webapp_about.html" style="background: var(--accent); color: #1a1a1a;">📜 Architecture &amp; Vibe</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="content-container" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; max-width: 1300px; margin: 3rem auto; padding: 0 1.5rem;">
+    
+    <div class="main-content">
+      <div class="card-section poster-card">
+        <h2>🎯 Built for the OPM Ecosystem</h2>
+        <p>
+          Every live gig involves a web of independent creators and businesses. SoundLedger PH connects three essential pillars:
+        </p>
+
+        <article class="indie-article">
+          <h3>1. Concert Promoters &amp; Production Houses</h3>
+          <p>
+            Safeguard event cash flow while booking top-tier talent with transparent escrow milestones that eliminate breach disputes.
+          </p>
+        </article>
+
+        <article class="indie-article">
+          <h3>2. Artist Management &amp; Booking Agencies</h3>
+          <p>
+            Oversee multi-city tour rosters with real-time split routing so commissions drop directly into agency accounts instantly.
+          </p>
+        </article>
+
+        <article class="indie-article">
+          <h3>3. Independent Artists &amp; Stage Crews</h3>
+          <p>
+            Get paid the minute the gear is packed down, backed by clean BIR-compliant tax documents.
+          </p>
+        </article>
+      </div>
+      <div class="card-section poster-card">
+        <h2>🔄 The 5-Step Backstage Pathway</h2>
+        <p>How funds travel securely from promoter escrow to payee accounts:</p>
+        
+        <ol class="poster-steps">
+          <li>
+            <strong>Digital Agreement &amp; Escrow Setup:</strong> 
+            Promoter and talent manager lock terms, milestone dates, and fee splits.
+          </li>
+          <li>
+            <strong>Pre-Show Escrow Funding:</strong> 
+            Total gross fee is deposited into an insured escrow vault 48 hours before doors open.
+          </li>
+          <li>
+            <strong>Milestone Sign-Off:</strong> 
+            Production and tour liaisons digitally sign off on the completed set.
+          </li>
+          <li>
+            <strong>Instant Split Disbursement:</strong> 
+            Clearing engine parses funds via InstaPay/PESONet simultaneously (80% artist, 15% agency, 5% crew).
+          </li>
+          <li>
+            <strong>Official Receipt Emission:</strong> 
+            An immutable digital official receipt is generated for instant tax reconciliation.
+          </li>
+        </ol>
+      </div>
+      <div class="card-section poster-card">
+        <h2>🧮 Live Split &amp; Receipt Calculator</h2>
+        <p>Test how SoundLedger parses any performance fee:</p>
+        
+        <div class="calc-box">
+          <div class="calc-input-group">
+            <div>
+              <label for="calcGross">Gross Performance Fee (₱ PHP):</label>
+              <input type="number" id="calcGross" value="100000" min="10000" step="5000" oninput="calculateSplits()">
+            </div>
+            <div>
+              <label for="calcAgencyRate">Management Commission (%):</label>
+              <input type="number" id="calcAgencyRate" value="15" min="0" max="30" step="1" oninput="calculateSplits()">
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-row">
+              <span>Gross Fee:</span>
+              <strong id="displayGross">₱100,000.00</strong>
+            </div>
+            <div class="calc-row">
+              <span>Management Share (<span id="displayAgencyRate">15</span>%):</span>
+              <strong id="displayAgencyCut">-₱15,000.00</strong>
+            </div>
+            <div class="calc-row">
+              <span>Production Crew Withholding (5%):</span>
+              <strong id="displayCrewCut">-₱5,000.00</strong>
+            </div>
+            <div class="calc-row total">
+              <span>Net Artist Disbursement (Official Receipt Total):</span>
+              <strong id="displayArtistNet">₱80,000.00</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <aside aria-label="Regulatory Compliance and Case Study" class="poster-card">
+      <h3>📋 BIR Compliance &amp; Case Study</h3>
+      <p>
+        Fully aligns with BIR Form 2307 and standard withholding tax codes for creative professionals.
+      </p>
+
+      <div class="vinyl-vault" style="margin: 1.25rem 0;">
+        <h4 style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.5rem;">⚡ Field Test Result</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+          <em>"Karpos Multimedia cut artist reconciliation cycles from 30 days down to 10 minutes across 50 festival acts."</em>
+        </p>
+      </div>
+
+      <p>
+        Ready to run a simulation? Head back to our
+        <a href="index.html" style="color: var(--primary); font-weight: 700; text-decoration: underline;">Payment Terminal &rarr;</a>
+      </p>
+    </aside>
+  </main>
+  <footer>
+    <p>&copy; 2026 SoundLedger PH. Fictional project for academic demonstration only.</p>
+    <p style="margin-top: 0.5rem;">
+      Standards &amp; Guidelines: 
+      <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN Web Docs HTML Reference</a> | 
+      <a href="https://www.w3.org/WAI/fundamentals/" target="_blank" rel="noopener noreferrer">W3C Accessibility Fundamentals</a>
+    </p>
+  </footer>
+  <script>
+    function calculateSplits() {
+      const grossElem = document.getElementById('calcGross');
+      if (!grossElem) return;
+      const gross = parseFloat(grossElem.value) || 0;
+      const agencyRate = parseFloat(document.getElementById('calcAgencyRate').value) || 0;
+      const crewRate = 5;
+
+      const agencyCut = gross * (agencyRate / 100);
+      const crewCut = gross * (crewRate / 100);
+      const netArtist = gross - agencyCut - crewCut;
+
+      document.getElementById('displayGross').innerText = `₱${gross.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+      document.getElementById('displayAgencyRate').innerText = agencyRate;
+      document.getElementById('displayAgencyCut').innerText = `-₱${agencyCut.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+      document.getElementById('displayCrewCut').innerText = `-₱${crewCut.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+      document.getElementById('displayArtistNet').innerText = `₱${netArtist.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+  </script>
+</body>
+</html>

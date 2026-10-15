@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SoundLedger PH - OPM Live Gig Payment Routing &amp; Official Receipt Settlement Platform.">
+  <title>SoundLedger PH | Payment Terminal</title>
+  <link rel="stylesheet" href="css/slstyle.css">
+</head>
+<body>
+
+  <header class="gig-header">
+    <div class="header-inner">
+      <div class="brand-badge">
+        <span class="live-dot"></span> LIVE SETTLEMENT PROTOCOL
+      </div>
+      <h1>SoundLedger <span>PH</span></h1>
+      <p>The Backstage Financial Engine for OPM Artists, Producers, &amp; Indie Promoters</p>
+      <a href="index.html" style="position: fixed; top: 20px; left: 20px; z-index: 9999; background: #161920; color: #d4a373; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-family: sans-serif; font-weight: bold; border: 1px solid #2c3240; box-shadow: 0 4px 10px rgba(0,0,0,0.4);">
+        &larr; Back to Compilation
+    </a>
+      <nav aria-label="Main Navigation" class="gig-nav">
+        <ul>
+          <li><a href="webapp_index.html" style="background: var(--accent); color: #1a1a1a;">⚡ Payment Terminal</a></li>
+          <li><a href="webapp_about.html">📜 Architecture &amp; Vibe</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-container" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; max-width: 1300px; margin: 3rem auto; padding: 0 1.5rem;">
+    
+    <div class="main-content">
+      
+      <div class="card-section poster-card">
+        <h2>🎸 Backstage Settlement, Zero Drama</h2>
+        <p>
+          SoundLedger PH kills post-festival payment ghosting. We lock performance guarantees in milestone escrow, 
+          automatically split earnings between your band, management, and road crew the second the house lights come up, and spit out BIR-compliant digital receipts instantly.
+        </p>
+        
+        <figure class="retro-figure">
+          <img src="images/Diagram.svg" alt="SoundLedger PH live payment flow diagram showing festival organizer escrow funding and automated split routing to OPM talent agencies" width="700" height="260">
+          <figcaption>⚡ Fig 1.0: Automated Live Escrow &amp; Split-Routing Flow</figcaption>
+        </figure>
+      </div>
+      <div class="card-section poster-card">
+        <h2>⚠️ The Local Gig Payout Struggle</h2>
+        <p>
+          Waiting 30 to 90 days for gig clearance is exhausting. Paper vouchers get lost in the tour van, manual bank transfers lack transparent tax deductions, and independent acts get shortchanged. SoundLedger automates the entire loop.
+        </p>
+        
+        <div class="tape-strip">
+          <h3>🎧 Automated Split-Disbursement</h3>
+          <p>
+            When the final set ends, gross funds route instantly: <strong>80% straight to the artist entity</strong>, <strong>15% to management</strong>, and <strong>5% reserved for local sound crew withholdings</strong>.
+          </p>
+        </div>
+
+        <h3 style="margin-top: 2rem;">🎛️ Guaranteed Gig Milestones</h3>
+        <ul class="stamp-list">
+          <li><strong>Pre-Show Escrow:</strong> 100% of performance guarantees funded 48 hours before doors open.</li>
+          <li><strong>Stage Milestone Check:</strong> Stage manager and tour manager digitally sign off on the set.</li>
+          <li><strong>Instant Settlement:</strong> Same-day InstaPay/PESONet clearance with zero reconciliation delays.</li>
+          <li><strong>Cryptographic Receipt:</strong> Automated official tax receipt dispatched to accounting desks.</li>
+        </ul>
+      </div>
+      <div class="card-section poster-card terminal-card">
+        <h2>🎚️ Live Disbursement Terminal</h2>
+        <p>Simulate an OPM milestone clearance below to trigger the ledger and cut a digital official receipt.</p>
+        
+        <form id="payment-form" onsubmit="handlePaymentSubmit(event)">
+          <div class="form-grid">
+            <div>
+              <label for="promoterSelect">Promoter / Organizer (Payer):</label>
+              <select id="promoterSelect" required>
+                <option value="Karpos Multimedia Inc. (TIN: 008-912-341-000)">Karpos Multimedia Inc.</option>
+                <option value="Grupo Namin Production Co. (TIN: 402-119-882-000)">Grupo Namin Production Co.</option>
+                <option value="BGC Arts Center Live (TIN: 219-554-102-000)">BGC Arts Center Live</option>
+              </select>
+            </div>
+            <div>
+              <label for="agencySelect">Artist / Management Agency (Payee):</label>
+              <select id="agencySelect" required>
+                <option value="Oasis Artist Management re: Indie Band Showcase">Oasis Artist Management (re: Indie Band Showcase)</option>
+                <option value="Sonic Manila Roster re: City Boy Acoustic Trio">Sonic Manila Roster (re: City Boy Acoustic Trio)</option>
+                <option value="Balcony Records Co. re: Session Live Set">Balcony Records Co. (re: Session Live Set)</option>
+              </select>
+            </div>
+            <div>
+              <label for="milestoneSelect">Gig Milestone:</label>
+              <select id="milestoneSelect" required>
+                <option value="Headline Set Completed - Main Stage">Headline Set Completed - Main Stage</option>
+                <option value="Soundcheck Deposit (50% Milestone)">Soundcheck Deposit (50% Milestone)</option>
+                <option value="Post-Show Final Stage Settlement">Post-Show Final Stage Settlement</option>
+              </select>
+            </div>
+            <div>
+              <label for="paymentAmount">Gross Performance Fee (₱ PHP):</label>
+              <input type="number" id="paymentAmount" min="10000" max="1500000" step="5000" value="120000" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-ticket">🎟️ Authorize &amp; Issue Official Receipt</button>
+        </form>
+
+        <!-- Live Ledger Table -->
+        <h3 style="margin-top: 2.5rem;">📜 Recent Ledger Transactions</h3>
+        <div class="table-container">
+          <table aria-label="Transaction Ledger Table">
+            <thead>
+              <tr>
+                <th>Receipt ID</th>
+                <th>Promoter (Payer)</th>
+                <th>Artist / Agency</th>
+                <th>Milestone</th>
+                <th>Gross Fee</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-body">
+            </tbody>
+          </table>
+        </div>
+        <div id="receipt-viewer">
+          <div class="receipt-header">
+            <div>
+              <h3 id="receipt-title" style="color:#000;">official receipt [or]</h3>
+              <p style="color:#666; font-size: 0.8rem;">Issued under SoundLedger PH B2B Settlement Protocol</p>
+            </div>
+            <div style="text-align: right;">
+              <p><strong>Receipt No:</strong> <span id="r-id">REC-PH-2026-001</span></p>
+              <p><strong>Date / Time:</strong> <span id="r-date">2026-10-14</span></p>
+            </div>
+          </div>
+          <hr style="border: 0; border-top: 2px dashed #000; margin: 1rem 0;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.85rem; margin-bottom: 1rem;">
+            <div>
+              <strong>Payer (Concert Promoter):</strong>
+              <p id="r-payer" style="color: #222;">Karpos Multimedia Inc.</p>
+            </div>
+            <div>
+              <strong>Payee (Management Entity):</strong>
+              <p id="r-payee" style="color: #222;">Oasis Artist Management</p>
+            </div>
+          </div>
+
+          <table class="receipt-table">
+            <thead>
+              <tr>
+                <th>Milestone Description</th>
+                <th style="text-align: right;">Split %</th>
+                <th style="text-align: right;">Amount (PHP)</th>
+              </tr>
+            </thead>
+            <tbody id="receipt-breakdown">
+            </tbody>
+          </table>
+
+          <div class="receipt-total">
+            Total Net Disbursed: <span id="r-net">₱96,000.00</span>
+          </div>
+
+          <div class="receipt-footer-stamp">
+            <strong>DIGITAL VERIFICATION HASH:</strong><br>
+            <span id="r-hash">0x7f9a882c40192e1099238e82110cba4839</span><br>
+            <small>Status: Disbursed &amp; Reconciled | BIR Form 2307 Withholding Attached</small>
+          </div>
+
+          <div class="no-print" style="margin-top: 1.5rem; text-align: right;">
+            <button type="button" class="btn-ticket" style="background:#000; color:#fff;" onclick="window.print()">🖨️ Print Receipt</button>
+            <button type="button" class="btn-ticket" style="background:#e5e5e5; color:#000;" onclick="document.getElementById('receipt-viewer').style.display='none'">✕ Close</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <aside aria-label="Quick Verification Stats and Escrow Summary" class="poster-card">
+      <h3>⚡ Active Festival Vaults</h3>
+      <p>Live accounts monitored by our automated clearinghouse.</p>
+      
+      <div class="vinyl-vault">
+        <small>Wanderland Music Festival</small>
+        <p class="vault-amount">₱12,500,000.00</p>
+        <span class="status-badge status-escrow">Locked in Escrow</span>
+      </div>
+
+      <div class="vinyl-vault">
+        <small>UP Fair Night Showcase</small>
+        <p class="vault-amount">₱3,450,000.00</p>
+        <span class="status-badge status-settled">100% Disbursed</span>
+      </div>
+
+      <h3 style="margin-top: 2rem;">📜 Need Deep Specs?</h3>
+      <p>
+        Learn how our multi-party routing prevents audit delays on our 
+        <a href="about.html" style="color: var(--primary); font-weight: 700; text-decoration: underline;">Architecture View &rarr;</a>
+      </p>
+
+      <hr style="border: 0; border-top: 2px dotted var(--border); margin: 1.5rem 0;">
+      
+      <p style="font-size: 0.8rem; color: var(--text-muted);">
+        All entities and transactions are simulated for academic demonstration purposes.
+      </p>
+    </aside>
+  </main>
+  <footer>
+    <p>&copy; 2026 SoundLedger PH. Fictional project for academic demonstration only.</p>
+    <p style="margin-top: 0.5rem;">
+      Standards &amp; Guidelines: 
+      <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C HTML5 Validator</a> | 
+      <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer">W3C WAI Guidelines</a>
+    </p>
+  </footer>
+  <script>
+    let transactions = [
+      {
+        id: "REC-PH-2026-901",
+        payer: "Karpos Multimedia Inc. (TIN: 008-912-341-000)",
+        payee: "Oasis Artist Management re: Indie Band Showcase",
+        milestone: "Headline Set Completed - Main Stage",
+        gross: 180000,
+        status: "Settled & Disbursed",
+        date: "2026-10-13 23:45 PHT",
+        hash: "0x89ab10fe912a78436cd910123fba883201"
+      },
+      {
+        id: "REC-PH-2026-894",
+        payer: "Grupo Namin Production Co. (TIN: 402-119-882-000)",
+        payee: "Sonic Manila Roster re: City Boy Acoustic Trio",
+        milestone: "Soundcheck Deposit (50% Milestone)",
+        gross: 65000,
+        status: "Settled & Disbursed",
+        date: "2026-10-13 17:15 PHT",
+        hash: "0x44cd882190eeaf7712ba66710928cd912a"
+      }
+    ];
+
+    function renderLedger() {
+      const tbody = document.getElementById('ledger-body');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      transactions.forEach((tx, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${tx.id}</strong></td>
+          <td>${tx.payer.split('(')[0]}</td>
+          <td>${tx.payee}</td>
+          <td>${tx.milestone}</td>
+          <td>₱${tx.gross.toLocaleString()}</td>
+          <td><span class="status-badge status-settled">${tx.status}</span></td>
+          <td><button type="button" class="btn-ticket btn-sm" onclick="viewReceipt(${idx})">View Receipt</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function viewReceipt(index) {
+      const tx = transactions[index];
+      const agencySplit = tx.gross * 0.15;
+      const crewSplit = tx.gross * 0.05;
+      const artistNet = tx.gross * 0.80;
+
+      document.getElementById('r-id').innerText = tx.id;
+      document.getElementById('r-date').innerText = tx.date;
+      document.getElementById('r-payer').innerText = tx.payer;
+      document.getElementById('r-payee').innerText = tx.payee;
+      document.getElementById('r-hash').innerText = tx.hash;
+      document.getElementById('r-net').innerText = `₱${artistNet.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+      const tbody = document.getElementById('receipt-breakdown');
+      tbody.innerHTML = `
+        <tr>
+          <td>Gross Performance Fee (${tx.milestone})</td>
+          <td style="text-align: right;">100%</td>
+          <td style="text-align: right;">₱${tx.gross.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+        </tr>
+        <tr>
+          <td>Less: Management Commission (Disbursed to Agency)</td>
+          <td style="text-align: right;">-15%</td>
+          <td style="text-align: right;">-₱${agencySplit.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+        </tr>
+        <tr>
+          <td>Less: Local Production &amp; Sound Crew Withholding</td>
+          <td style="text-align: right;">-5%</td>
+          <td style="text-align: right;">-₱${crewSplit.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+        </tr>
+        <tr style="font-weight: bold; background: #e5e5e5;">
+          <td>Net Disbursed to Performing Artist Entity</td>
+          <td style="text-align: right;">80%</td>
+          <td style="text-align: right;">₱${artistNet.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+        </tr>
+      `;
+
+      const viewer = document.getElementById('receipt-viewer');
+      viewer.style.display = 'block';
+      viewer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handlePaymentSubmit(e) {
+      e.preventDefault();
+      const payer = document.getElementById('promoterSelect').value;
+      const payee = document.getElementById('agencySelect').value;
+      const milestone = document.getElementById('milestoneSelect').value;
+      const amount = parseFloat(document.getElementById('paymentAmount').value);
+
+      const randomHash = "0x" + Array.from({length: 32}, () => Math.floor(Math.random()*16).toString(16)).join('');
+      const newId = "REC-PH-2026-" + Math.floor(100 + Math.random() * 900);
+      const now = new Date().toLocaleDateString() + ' PHT';
+
+      const newTx = {
+        id: newId,
+        payer: payer,
+        payee: payee,
+        milestone: milestone,
+        gross: amount,
+        status: "Settled & Disbursed",
+        date: now,
+        hash: randomHash
+      };
+
+      transactions.unshift(newTx);
+      renderLedger();
+      viewReceipt(0);
+    }
+
+    document.addEventListener('DOMContentLoaded', renderLedger);
+  </script>
+</body>
+</html>
