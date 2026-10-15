@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 260" width="100%" height="100%">
+  <style>
+    .bg { fill: #f5f0eb; }
+    .box { fill: #ffffff; stroke: #1a1a1a; stroke-width: 3px; rx: 6px; filter: drop-shadow(3px 3px 0px #1a1a1a); }
+    .highlight-box { fill: #fff8e8; stroke: #1a1a1a; stroke-width: 3px; rx: 6px; filter: drop-shadow(3px 3px 0px #1a1a1a); }
+    .text-title { fill: #1a1a1a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; font-weight: 900; text-transform: uppercase; }
+    .text-desc { fill: #666666; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 600; }
+    .text-badge { fill: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 900; }
+    .badge-bg { fill: #ff3b30; stroke: #1a1a1a; stroke-width: 2px; rx: 4px; }
+    .arrow { stroke: #1a1a1a; stroke-width: 3px; fill: none; marker-end: url(#arrowhead); }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="7" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a1a1a" />
+    </marker>
+  </defs>
+
+  <!-- Background (Warm Raw Canvas) -->
+  <rect width="700" height="260" class="bg" rx="6" />
+
+  <!-- Grid pattern lines for retro poster texture -->
+  <line x1="0" y1="50" x2="700" y2="50" stroke="#e6dfd1" stroke-width="1" stroke-dasharray="4 4" />
+  <line x1="0" y1="130" x2="700" y2="130" stroke="#e6dfd1" stroke-width="1" stroke-dasharray="4 4" />
+  <line x1="0" y1="210" x2="700" y2="210" stroke="#e6dfd1" stroke-width="1" stroke-dasharray="4 4" />
+
+  <!-- Step 1: Promoter Escrow -->
+  <rect x="30" y="35" width="155" height="95" class="box" />
+  <text x="48" y="65" class="text-title">1. Promoter Escrow</text>
+  <text x="48" y="90" class="text-desc">100% Fee Funded</text>
+  <text x="48" y="108" class="text-desc">48h Before Doors</text>
+
+  <!-- Connector 1 -->
+  <path d="M 190 82 L 235 82" class="arrow" />
+
+  <!-- Step 2: Milestone Verification -->
+  <rect x="240" y="25" width="210" height="115" class="highlight-box" />
+  <rect x="255" y="40" class="badge-bg" width="105" height="22" />
+  <text x="265" y="55" class="text-badge">SOUNDLEDGER PH</text>
+  <text x="255" y="85" class="text-title">2. Milestone Sign-Off</text>
+  <text x="255" y="108" class="text-desc">Stage Manager &amp; Tour</text>
+  <text x="255" y="123" class="text-desc">Manager Digital Verification</text>
+
+  <!-- Connector 2 -->
+  <path d="M 455 82 L 500 82" class="arrow" />
+
+  <!-- Step 3: Split Disbursal Outputs (Stacked Mini Cards) -->
+  <g transform="translate(505, 15)">
+    <rect x="0" y="0" width="165" height="36" class="box" />
+    <text x="12" y="16" class="text-title" style="font-size: 10px;">Artist Net (80%)</text>
+    <text x="12" y="28" class="text-desc">InstaPay Instant Credit</text>
+
+    <rect x="0" y="44" width="165" height="36" class="box" />
+    <text x="12" y="60" class="text-title" style="font-size: 10px;">Agency Share (15%)</text>
+    <text x="12" y="72" class="text-desc">Management Roster</text>
+
+    <rect x="0" y="88" width="165" height="36" class="box" />
+    <text x="12" y="104" class="text-title" style="font-size: 10px;">Crew Reserve (5%)</text>
+    <text x="12" y="116" class="text-desc">Sound &amp; Production</text>
+  </g>
+
+  <!-- Bottom Banner: Official Receipt Note -->
+  <rect x="30" y="160" width="640" height="55" class="box" />
+  <circle cx="55" cy="188" r="8" fill="#ff9500" stroke="#1a1a1a" stroke-width="2" />
+  <text x="75" y="185" class="text-title" style="font-size: 11px;">3. Automated Settlement Engine:</text>
+  <text x="75" y="201" class="text-desc" style="font-size: 10px; font-weight: 800; fill: #1a1a1a;">Immutable cryptographic BIR-compliant Official Receipt (OR) dispatched instantly.</text>
+</svg>
